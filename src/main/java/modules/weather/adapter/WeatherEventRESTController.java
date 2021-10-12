@@ -15,11 +15,6 @@ public class WeatherEventRESTController {
         this.weatherEventApplicationService = weatherEventApplicationService;
     }
 
-    @GetMapping
-    public ResponseEntity test(){
-        return ResponseEntity.ok("gelukt");
-    }
-
     @PostMapping("/convert/{id}/{newUnit}/{value}")
     public ResponseEntity<String> convertTemperature(@PathVariable int id, @PathVariable String newUnit, @PathVariable double value) {
         weatherEventApplicationService.convertTemperature(id, newUnit, value);

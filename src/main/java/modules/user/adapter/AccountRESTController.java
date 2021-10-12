@@ -13,16 +13,12 @@ public class AccountRESTController {
     public AccountRESTController(AccountApplicationService accountApplicationService){
         this.accountApplicationService = accountApplicationService;
     }
-
-    @GetMapping("/test")
-    public ResponseEntity test(){
-        return ResponseEntity.ok("gelukt");
-    }
-
+    
     @PostMapping("/createAccount/{username}/{firstname}/{lastname}/{prefix}/{email}/{password}")
-    public void createAccount(@PathVariable String username, @PathVariable String firstname, @PathVariable String lastname,
-                              @PathVariable String prefix, @PathVariable String email, @PathVariable String password){
+    public ResponseEntity<String> createAccount(@PathVariable String username, @PathVariable String firstname, @PathVariable String lastname,
+                                                @PathVariable String prefix, @PathVariable String email, @PathVariable String password){
         accountApplicationService.createAccount( username, firstname,  lastname,  prefix,  email,  password);
+        return ResponseEntity.ok("Account created");
 
     }
 
